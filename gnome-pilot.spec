@@ -7,10 +7,12 @@ Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
 Version:	0.1.69
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/0.1/%{name}-%{version}.tar.bz2
+# Source0-md5:	385b70713ab2e79196489377494f69b5
+Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	ORBit-devel >= 0.4.3
 #BuildRequires:	autoconf
@@ -114,6 +116,7 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 #rm -f missing
