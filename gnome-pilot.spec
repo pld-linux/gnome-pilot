@@ -1,20 +1,21 @@
 Summary:	GNOME pilot programs
 Summary(da):	GNOME pilot programmer
 Name:		gnome-pilot
-Version:	0.1.50
+Version:	0.1.54
 Release:	1
 License:	GPL
 Group:		Applications/Communications
+Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
 Source0:	http://www.gnome.org/gnome-pilot/download/%{name}-%{version}.tar.gz
-Patch1:		gnome-pilot-DESTDIR.patch
+Patch1:		%{name}-DESTDIR.patch
 URL:		http://www.gnome.org/gnome-pilot
 BuildRequires:	pilot-link-devel >= 0.9.0
 BuildRequires:	gnome-core-devel >= 1.0.7
 BuildRequires:	gnome-libs-devel
 BuildRequires:	libglade-devel
 BuildRequires:	ORBit-devel >= 0.4.3
-BuildRequires:	gob >= 0.92.4
+BuildRequires:	gob >= 1.0.4
 BuildRequires:	gettext-devel
 BuildRequires:	automake
 BuildRequires:	pilot-link-devel
@@ -41,6 +42,7 @@ kraftiger og nemmere at sætte op.
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -55,6 +57,7 @@ gpilotd include filer og biblioteker.
 Summary:	GNOME pilot static libraries
 Summary(pl):	Biblioteki statyczne pakietu gnome-pilot
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -72,16 +75,16 @@ Biblioteki statyczne pakietu gnome-pilot.
 %build
 gettextize --copy --force
 automake
-LDFLAGS="-s"; export LDFLAGS
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.* \
-	$RPM_BUILD_ROOT%{_libdir}/gnome-pilot/conduits/lib*.so.*.*
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	pPalmPilotdir=%{_applnkdir}/Settings/Peripherals \
+	paneldir=%{_applnkdir}/Settings/Peripherals/Conduits \
 
 gzip -9nf AUTHORS ChangeLog NEWS README
 
@@ -115,18 +118,26 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so*
 
 %{_datadir}/applets/Utility/*
-%{_datadir}/control-center/Peripherals/PalmPilot
+%dir %{_datadir}/control-center/Peripherals/Conduits
+%{_datadir}/control-center/Peripherals/Conduits/*desktop
+%{_datadir}/control-center/Peripherals/Conduits/.directory
+%{_datadir}/control-center/Peripherals/gpilotd-control-applet.desktop
+%dir %{_applnkdir}/Settings/Peripherals/Conduits
+%{_applnkdir}/Settings/Peripherals/Conduits/*desktop
+%{_applnkdir}/Settings/Peripherals/Conduits/.directory
+%{_applnkdir}/Settings/Peripherals/gpilotd-control-applet.desktop
 %{_datadir}/gnome-pilot
-%{_datadir}/gob/*
 %{_datadir}/mime-info/*
+%{_datadir}/oaf/*
 %{_datadir}/pixmaps/*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/gnome-pilot-config
 %attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/*
 %{_datadir}/idl/*
+%{_datadir}/gob/*
 
 %files static
 %defattr(644,root,root,755)
