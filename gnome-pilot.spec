@@ -7,7 +7,7 @@ Summary(uk):	“œ«“¡Õ… GNOME ƒÃ— “œ¬œ‘… ⁄ PalmPilot
 Summary(zh_CN):	ºØ≥…GNOME∫ÕPalmPilotµƒ≥Ã–ÚºØ
 Name:		gnome-pilot
 Version:	2.0.10
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
@@ -132,6 +132,10 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-pilot/conduits/*.{la,a}
 
+install -d $RPM_BUILD_ROOT%{_datadir}/gnome/capplets
+mv $RPM_BUILD_ROOT%{_datadir}/control-center-2.0/capplets/*.desktop $RPM_BUILD_ROOT%{_datadir}/gnome/capplets/*.desktop
+
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -156,7 +160,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/gnome-pilot/conduits
 %attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so
 %{_libdir}/bonobo/servers/*
-%{_datadir}/control-center-2.0/capplets/*
+%{_datadir}/gnome/capplets/*
 %{_datadir}/gnome-pilot
 %{_datadir}/mime-info/*
 %{_datadir}/idl/*
