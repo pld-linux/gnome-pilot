@@ -1,5 +1,6 @@
 Summary:	GNOME pilot programs
 Summary(da):	GNOME pilot programmer
+Summary(pl):	Programy pilota GNOME
 Name:		gnome-pilot
 Version:	0.1.54
 Release:	2
@@ -38,6 +39,10 @@ Objekt Model Miljø. Et smart navn, men GNOME er i virkeligheden en
 pænt GUI desktop miljø. Det gør brugen af din computer nemmere,
 kraftiger og nemmere at sætte op.
 
+%description -l pl
+GNOME pilot jest kolekcj± programów i demonów integruj±cych GNOME z
+PalmPilotem(TM).
+
 %package devel
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
@@ -54,8 +59,11 @@ Requires:	%{name} = %{version}
 %description devel
 gpilotd libraries and includes.
 
-%description -l da devel
+%description devel -l da
 gpilotd include filer og biblioteker.
+
+%description devel -l pl
+Biblioteki i pliki nag³ówkowe gpilotd.
 
 %package static
 Summary:	GNOME pilot static libraries
@@ -73,7 +81,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 GNOME pilot static libraries
 
-%description -l pl devel
+%description devel -l pl
 Biblioteki statyczne pakietu gnome-pilot.
 
 %prep
@@ -99,7 +107,7 @@ gzip -9nf AUTHORS ChangeLog NEWS README
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
+%post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
