@@ -6,7 +6,7 @@ diff -ur gnome-pilot-2.0.12.orig/capplet/gpilotd-control-applet.desktop.in gnome
  Type=Application
  Icon=gnome-palm.png
 -Categories=GNOME;Application;Settings;
-+Categories=GTK;GNOME;Settings;Capplet;
++Categories=GTK;GNOME;Settings;X-Capplet;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=gnome-pilot
  X-GNOME-Bugzilla-Component=capplet
