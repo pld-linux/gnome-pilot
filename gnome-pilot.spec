@@ -25,16 +25,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_sysconfdir	/etc/X11/GNOME
 
 %description
-GNOME pilot is a collection of programs and daemon for integrating GNOME
-and the PalmPilot<tm>. GNOME is the GNU Network Object Model Environment.
-That's a fancy name but really GNOME is a nice GUI desktop environment. It
-makes using your computer easy, powerful, and easy to configure.
+GNOME pilot is a collection of programs and daemon for integrating
+GNOME and the PalmPilot<tm>. GNOME is the GNU Network Object Model
+Environment. That's a fancy name but really GNOME is a nice GUI
+desktop environment. It makes using your computer easy, powerful, and
+easy to configure.
 
 %description -l da
-GNOME står for GNU Network Object Model Environment, GNU Netværk Objekt
-Model Miljø. Et smart navn, men GNOME er i virkeligheden en pænt GUI desktop
-miljø. Det gør brugen af din computer nemmere, kraftiger og nemmere at sætte
-op.
+GNOME står for GNU Network Object Model Environment, GNU Netværk
+Objekt Model Miljø. Et smart navn, men GNOME er i virkeligheden en
+pænt GUI desktop miljø. Det gør brugen af din computer nemmere,
+kraftiger og nemmere at sætte op.
 
 %package devel
 Summary:	GNOME pilot includes, etc
