@@ -6,8 +6,6 @@ Version:	0.1.54
 Release:	2
 License:	GPL
 Group:		Applications/Communications
-Group(de):	Applikationen/Kommunikation
-Group(pl):	Aplikacje/Komunikacja
 Source0:	http://www.gnome.org/gnome-pilot/download/%{name}-%{version}.tar.gz
 Patch1:		%{name}-DESTDIR.patch
 URL:		http://www.gnome.org/gnome-pilot
@@ -47,13 +45,6 @@ PalmPilotem(TM).
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -69,13 +60,6 @@ Biblioteki i pliki nagЁСwkowe gpilotd.
 Summary:	GNOME pilot static libraries
 Summary(pl):	Biblioteki statyczne pakietu gnome-pilot
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
