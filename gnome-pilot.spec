@@ -7,7 +7,7 @@ Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
 Version:	2.0.9
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
@@ -28,6 +28,8 @@ BuildRequires:	libgnomeui-devel >= 2.0.0
 #BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pilot-link-devel >= 0.11.4
+Requires(post,postun): /sbin/ldconfig
+Requires(post): GConf2 >= 2.3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
