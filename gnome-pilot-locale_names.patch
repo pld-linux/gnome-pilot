@@ -1,0 +1,22 @@
+--- gnome-pilot-2.0.10/configure.in~	Mon Jul 26 10:50:51 2004
++++ gnome-pilot-2.0.10/configure.in	Mon Jul 26 10:50:51 2004
+@@ -172,7 +172,7 @@
+ GETTEXT_PACKAGE=gnome-pilot
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", "Package name")
+-ALL_LINGUAS="am az ca cs cy da de el es fi fr gl he hu ja nl nn no pl pt pt_BR ru sk sv tr uk vi zh_TW" 
++ALL_LINGUAS="am az ca cs cy da de el es fi fr gl he hu ja nb nl nn pl pt pt_BR ru sk sv tr uk vi zh_TW" 
+ AM_GLIB_GNU_GETTEXT
+ 
+ 
+--- gnome-pilot-2.0.10/configure~	Mon Jul 26 10:50:42 2004
++++ gnome-pilot-2.0.10/configure	Mon Jul 26 10:50:42 2004
+@@ -9775,7 +9775,7 @@
+ #define GETTEXT_PACKAGE "$GETTEXT_PACKAGE"
+ _ACEOF
+ 
+-ALL_LINGUAS="am az ca cs cy da de el es fi fr gl he hu ja nl nn no pl pt pt_BR ru sk sv tr uk vi zh_TW"
++ALL_LINGUAS="am az ca cs cy da de el es fi fr gl he hu ja nb nl nn pl pt pt_BR ru sk sv tr uk vi zh_TW"
+ 
+ 
+ for ac_header in locale.h
