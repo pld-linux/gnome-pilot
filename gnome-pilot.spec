@@ -65,7 +65,7 @@ Summary(ru):	Файлы разработки для GNOME pilot
 Summary(pl):	Biblioteki i pliki nagЁСwkowe gpilotd
 Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo do GNOME pilot
 Summary(uk):	Файли розробки для GNOME pilot
-Summary(zh_CN):	GNOME pilot©╙╥╒©Б 
+Summary(zh_CN):	GNOME pilot©╙╥╒©Б
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
