@@ -2,7 +2,7 @@ Summary:	GNOME pilot programs
 Summary(da):	GNOME pilot programmer
 Name:		gnome-pilot
 Version:	0.1.54
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Group(de):	Applikationen/Kommunikation
@@ -83,8 +83,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	pPalmPilotdir=%{_applnkdir}/Settings/Peripherals \
-	paneldir=%{_applnkdir}/Settings/Peripherals/Conduits \
+	pPalmPilotdir=%{_applnkdir}/Settings/GNOME/Peripherals \
+	paneldir=%{_applnkdir}/Settings/GNOME/Peripherals/Conduits \
 
 gzip -9nf AUTHORS ChangeLog NEWS README
 
@@ -122,10 +122,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/control-center/Peripherals/Conduits/*desktop
 %{_datadir}/control-center/Peripherals/Conduits/.directory
 %{_datadir}/control-center/Peripherals/gpilotd-control-applet.desktop
-%dir %{_applnkdir}/Settings/Peripherals/Conduits
-%{_applnkdir}/Settings/Peripherals/Conduits/*desktop
-%{_applnkdir}/Settings/Peripherals/Conduits/.directory
-%{_applnkdir}/Settings/Peripherals/gpilotd-control-applet.desktop
+%dir %{_applnkdir}/Settings/GNOME/Peripherals/Conduits
+%{_applnkdir}/Settings/GNOME/Peripherals/Conduits/*desktop
+%{_applnkdir}/Settings/GNOME/Peripherals/Conduits/.directory
+%{_applnkdir}/Settings/GNOME/Peripherals/gpilotd-control-applet.desktop
 %{_datadir}/gnome-pilot
 %{_datadir}/mime-info/*
 %{_datadir}/oaf/*
