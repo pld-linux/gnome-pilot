@@ -6,7 +6,7 @@ Summary(ru):	Программы GNOME для работы с PalmPilot
 Summary(uk):	Програми GNOME для роботи з PalmPilot
 Summary(zh_CN):	╪╞ЁиGNOME╨мPalmPilot╣дЁлпР╪╞
 Name:		gnome-pilot
-Version:	0.1.67
+Version:	0.1.69
 Release:	1
 License:	GPL
 Group:		Applications/Communications
