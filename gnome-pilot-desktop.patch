@@ -1,0 +1,101 @@
+diff -ur gnome-pilot-0.1.69.orig/applet/gpilot-applet.desktop gnome-pilot-0.1.69/applet/gpilot-applet.desktop
+--- gnome-pilot-0.1.69.orig/applet/gpilot-applet.desktop	Thu Apr 19 11:30:33 2001
++++ gnome-pilot-0.1.69/applet/gpilot-applet.desktop	Wed Dec 24 23:27:18 2003
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+ Name=PilotSync
+ Name[da]=PilotSynk
+-Name[el]=Óõã÷ñïíéóìüò Pilot
++Name[el]=Î£Ï…Î³Ï‡ÏÎ¿Î½Î¹ÏƒÎ¼ÏŒÏ‚ Pilot
+ Name[es]=PilotSync
+ Nami[fi]=PilotSync
+ Name[fr]=PilotSync
+ Name[gl]=PilotSync
+-Name[ja]=¥Ñ¥¤¥í¥Ã¥È¥·¥ó¥¯
++Name[ja]=ãƒ‘ã‚¤ãƒ­ãƒƒãƒˆã‚·ãƒ³ã‚¯
+ Name[no]=PilotSynk
+ Name[pt_BR]=PilotSync
+ Name[sk]=PilotSynch
+@@ -14,18 +14,21 @@
+ Name[tr]=PilotSync
+ Comment=Synchroniser for PalmPilot
+ Comment[da]=Synkronisering til Palm Pilot
+-Comment[el]=Óõã÷ñïíéóìüò ãéá ôï PalmPilot
++Comment[el]=Î£Ï…Î³Ï‡ÏÎ¿Î½Î¹ÏƒÎ¼ÏŒÏ‚ Î³Î¹Î± Ï„Î¿ PalmPilot
+ Comment[es]=Sincronizador para PalmPilot
+ Comment[fi]=Synkronoija PalmPilotille
+ Comment[fr]=Synchroniseur pour PalmPilot
+ Comment[gl]=Sincronizador para PalmPilot
+-Comment[ja]=PalmPilot¤È¤ÎÆ±´ü¥×¥í¥°¥é¥à
++Comment[ja]=PalmPilotã¨ã®åŒæœŸãƒ—ãƒ­ã‚°ãƒ©ãƒ 
+ Comment[no]=Synkronisering for PalmPilot
++Comment[pl]=Synchronizacja PalmPilota
+ Comment[pt_BR]=Sincronizador para PalmPilot
+-Comment[sk]=Synchronizácia pre PalmPilot
+-Comment[sv]=Synkronisering för Palm Pilot
+-Comment[tr]=PalmPilot için eşleştirme uygulaması
++Comment[sk]=SynchronizÃ¡cia pre PalmPilot
++Comment[sv]=Synkronisering fÃ¶r Palm Pilot
++Comment[tr]=PalmPilot iÃ§in eÅŸleÅŸtirme uygulamasÄ±
+ Exec=gpilot-applet --activate-goad-server=gpilot-applet
+ Icon=sync_icon.png
+-Terminal=0
++Terminal=false
+ Type=Application
++Encoding=UTF-8
++# vi: encoding=utf-8
+diff -ur gnome-pilot-0.1.69.orig/capplet/gpilotd-control-applet.desktop gnome-pilot-0.1.69/capplet/gpilotd-control-applet.desktop
+--- gnome-pilot-0.1.69.orig/capplet/gpilotd-control-applet.desktop	Thu Mar  8 18:04:18 2001
++++ gnome-pilot-0.1.69/capplet/gpilotd-control-applet.desktop	Wed Dec 24 23:32:41 2003
+@@ -1,30 +1,32 @@
+ [Desktop Entry]
+ Name=Pilot Link
+-Name[pt_BR]=Conexão para Pilot
+ Name[da]=Pilot link
+-Name[el]=Éäéüôçôåò ôïõ PilotLink
++Name[el]=Î™Î´Î¹ÏŒÏ„Î·Ï„ÎµÏ‚ Ï„Î¿Ï… PilotLink
+ Name[es]=Propiedades de PilotLink
+ Name[fr]=Lien Pilot
+-Name[gl]=Ligazón co Pilot
+-Name[ja]=¥Ñ¥¤¥í¥Ã¥È¥ê¥ó¥¯
++Name[gl]=LigazÃ³n co Pilot
++Name[ja]=ãƒ‘ã‚¤ãƒ­ãƒƒãƒˆãƒªãƒ³ã‚¯
+ Name[no]=Egenskaper for PilotLink
++Name[pl]=ÅÄ…cze Pilota
++Name[pt_BR]=ConexÃ£o para Pilot
+ Name[sk]=Spojenie s Pilotom
+ Name[sv]=Pilot Link
+-Name[tr]=Pilot bağı
+-Name[wa]=Prôpietés di Pilot Link
+-Comment=Configure the link between the users pilot and the computer.
+-Comment[pt_BR]=Configura link entre usuários de pilot com o computador. 
+-Comment[da]=Konfigurér forbindelsen mellem brugerens Palm Pilot og pc'en.
+-Comment[el]=Ñõèìßæåé ôç óıíäåóç ìåôáîı ôïõ PalmPilot ôïõ ÷ñŞóôç êáé ôïõ õğïëïãéóôŞ.
+-Comment[es]=Configuración del enlace entre la computadora y el Pilot del usuario.
+-Comment[fr]=Configure le lien entre l'ordinateur et le Pilot de l'utilisateur.
+-Comment[gl]=Configura a ligazón entre o ordenador e o Pilot do usuario
+-Comment[ja]=¤¢¤Ê¤¿¤Î¥³¥ó¥Ô¥å¡¼¥¿¤ÈPilot´Ö¤ÎÀÜÂ³¤òÀßÄê¤·¤Ş¤¹¡£
+-Comment[no]=Konfigurér linken mellom brukerens pilot og datamaskinen.
+-Comment[sk]=Nastavenie spojenia medzi Palm Pilotom a poèítaèom.
+-Comment[sv]=Konfigurera länkningen mellan användarens Palm Pilot och datorn.
+-Comment[tr]=Kullanıcını Pilot'u ve bilgisayar arasındaki bağı ayarlar
+-Comment[wa]=Apontiaedje do loyen di l' éndjole å Pilot di l' ûzeu.
++Name[tr]=Pilot baÄŸÄ±
++Name[wa]=PrÃ´pietÃ©s di Pilot Link
++Comment=Configure the link between the users pilot and the computer
++Comment[da]=KonfigurÃ©r forbindelsen mellem brugerens Palm Pilot og pc'en
++Comment[el]=Î¡Ï…Î¸Î¼Î¯Î¶ÎµÎ¹ Ï„Î· ÏƒÏÎ½Î´ÎµÏƒÎ· Î¼ÎµÏ„Î±Î¾Ï Ï„Î¿Ï… PalmPilot Ï„Î¿Ï… Ï‡ÏÎ®ÏƒÏ„Î· ÎºÎ±Î¹ Ï„Î¿Ï… Ï…Ï€Î¿Î»Î¿Î³Î¹ÏƒÏ„Î®
++Comment[es]=ConfiguraciÃ³n del enlace entre la computadora y el Pilot del usuario
++Comment[fr]=Configure le lien entre l'ordinateur et le Pilot de l'utilisateur
++Comment[gl]=Configura a ligazÃ³n entre o ordenador e o Pilot do usuario
++Comment[ja]=ã‚ãªãŸã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã¨Piloté–“ã®æ¥ç¶šã‚’è¨­å®šã—ã¾ã™ã€‚
++Comment[no]=KonfigurÃ©r linken mellom brukerens pilot og datamaskinen
++Comment[pl]=Konfiguracja Å‚Ä…cza pomiÄ™dzy Palm Pilotem a komputerem
++Comment[pt_BR]=Configura link entre usuÃ¡rios de pilot com o computador
++Comment[sk]=Nastavenie spojenia medzi Palm Pilotom a poÄÃ­taÄom
++Comment[sv]=Konfigurera lÃ¤nkningen mellan anvÃ¤ndarens Palm Pilot och datorn
++Comment[tr]=KullanÄ±cÄ±nÄ± Pilot'u ve bilgisayar arasÄ±ndaki baÄŸÄ± ayarlar
++Comment[wa]=Apontiaedje do loyen di l' Ã©ndjole Ã¥ Pilot di l' Ã»zeu
+ Exec=gpilotd-control-applet
+ Terminal=0
+ Icon=gnome-palm.png
