@@ -6,12 +6,12 @@ Summary(ru):	ðÒÏÇÒÁÍÍÙ GNOME ÄÌÑ ÒÁÂÏÔÙ Ó PalmPilot
 Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
-Version:	2.0.0
-Release:	1
+Version:	2.0.9
+Release:	0.1
 License:	GPL
 Group:		Applications/Communications
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	11bdb93424803637f2c679d016cb2cea
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	08f768058aa00b6a9df4e6f9ebc29c94
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 2.0.0
@@ -133,8 +133,9 @@ rm -f missing
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	pPalmPilotdir=%{_applnkdir}/Settings/GNOME
+	DESTDIR=$RPM_BUILD_ROOT
+
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -145,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
@@ -158,22 +159,23 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so
 %{_libdir}/bonobo/servers/*
 
-%{_datadir}/control-center/Peripherals/*
-%{_applnkdir}/Settings/GNOME/*
+%{_datadir}/control-center-2.0/capplets/*
 %{_mandir}/man1/*
 %{_datadir}/gnome-pilot
-%{_datadir}/gnome-pilot-2
 %{_datadir}/mime-info/*
 %{_datadir}/idl/*
+%{_omf_dest_dir}/%{name}
 %{_pixmapsdir}/*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
+%{_libdir}/gnome-pilot/conduits/lib*.la
 %{_includedir}/*
 %{_pkgconfigdir}/*
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%{_libdir}/gnome-pilot/conduits/lib*.a
