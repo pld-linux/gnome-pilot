@@ -6,12 +6,13 @@ Summary(ru):	Программы GNOME для работы с PalmPilot
 Summary(uk):	Програми GNOME для роботи з PalmPilot
 Name:		gnome-pilot
 Version:	0.1.54
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://www.gnome.org/gnome-pilot/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-am_fix.patch
+Patch2:		%{name}-ac_fix.patch
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	ORBit-devel >= 0.4.3
 BuildRequires:	autoconf
@@ -115,12 +116,14 @@ Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2
 
 %build
 sed -e s/AM_GNOME_GETTEXT/AM_GNU_GETTEXT/ configure.in > configure.in.tmp
 mv -f configure.in.tmp configure.in
 rm -f missing
 %{__gettextize}
+%{__libtoolize}
 aclocal -I macros
 %{__autoconf}
 %{__automake}
