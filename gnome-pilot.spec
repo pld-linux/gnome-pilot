@@ -1,105 +1,133 @@
-#
-# Note that this is NOT a relocatable package
-# $Id: gnome-pilot.spec,v 1.1 2000-02-17 06:40:42 kloczek Exp $
-#
-%define ver      0.1.47
-%define rel      1
-%define prefix   /usr
-%define name	 gnome-pilot
+Summary:	GNOME pilot programs
+Summary(da):	GNOME pilot programmer
+Name:		gnome-pilot
+Version:	0.1.49
+Release:	1
+License:	GPL
+Group:		Applications/Communications
+Group(pl):	Aplikacje/Komunikacja
+Source0:	http://www.gnome.org/gnome-pilot/download/%{name}-%{version}.tar.gz
+Patch1:		gnome-pilot-DESTDIR.patch
+URL:		http://www.gnome.org/gnome-pilot
+BuildRequires:	pilot-link-devel >= 0.9.0
+BuildRequires:	gnome-core-devel >= 1.0.7
+BuildRequires:	gnome-libs-devel
+BuildRequires:	libglade-devel
+BuildRequires:	ORBit-devel >= 0.4.3
+BuildRequires:	gob >= 0.92.4
+BuildRequires:	gettext-devel
+BuildRequires:	automake
+BuildRequires:	pilot-link-devel
+BuildRequires:	libxml-devel
+BuildRoot:	/tmp/%{name}-%{version}-root
 
-Summary: GNOME pilot programs
-Summary(da): GNOME pilot programmer
-Name: %name
-Version: %ver
-Release: %rel
-Copyright: LGPL
-Group: Applications/Communications
-Source: http://www.gnome.org/gnome-pilot/download/%name-%ver.tar.gz
-BuildRoot: /var/tmp/gnome-pilot
-Obsoletes: gnome-pilot
-Packager: Eskil Heyn Olsen <deity@eskil.dk>
-URL: http://www.gnome.org/gnome-pilot
-Prereq: /sbin/install-info
-Prefix: %{prefix}
-Docdir: %{prefix}/doc
-Requires: pilot-link >= 0.9.0
-Requires: gnome-core >= 1.0.7
-Requires: ORBit >= 0.4.3
+%define		_prefix		/usr/X11R6
+%define		_sysconfdir	/etc/X11/GNOME
 
 %description
-GNOME pilot is a collection of programs and daemon for integrating
-GNOME and the PalmPilot<tm>.
-
-GNOME is the GNU Network Object Model Environment.  That's a fancy
-name but really GNOME is a nice GUI desktop environment.  It makes
-using your computer easy, powerful, and easy to configure.
+GNOME pilot is a collection of programs and daemon for integrating GNOME
+and the PalmPilot<tm>. GNOME is the GNU Network Object Model Environment.
+That's a fancy name but really GNOME is a nice GUI desktop environment. It
+makes using your computer easy, powerful, and easy to configure.
 
 %description -l da
-
 GNOME står for GNU Network Object Model Environment, GNU Netværk Objekt
-Model Miljø. Et smart navn, men GNOME er i virkeligheden en pænt GUI
-desktop miljø. Det gør brugen af din computer nemmere, kraftiger og nemmere
-at sætte op.
+Model Miljø. Et smart navn, men GNOME er i virkeligheden en pænt GUI desktop
+miljø. Det gør brugen af din computer nemmere, kraftiger og nemmere at sætte
+op.
 
 %package devel
-Summary: GNOME pilot libraries, includes, etc
-Summary(da): GNOME pilot biblioteker, include filer etc.
-Group: Development/Libraries
-Requires: gnome-core-devel
-Requires: ORBit-devel
-Requires: pilot-link-devel
-Requires: gnome-pilot = %{ver}
-PreReq: /sbin/install-info
+Summary:	GNOME pilot includes, etc
+Summary(da):	GNOME pilot include filer etc
+Group:		Development/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
 
 %description devel
 gpilotd libraries and includes.
 
-%description devel -l da
+%description -l da devel
 gpilotd include filer og biblioteker.
 
-%changelog
+%package static
+Summary:	GNOME pilot static libraries
+Summary(pl):	Biblioteki statyczne pakietu gnome-pilot
+Group:		Development/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
-* Wed Feb 17 1999 Eskil Heyn Olsen <deity@eskil.dk>
+%description static
+GNOME pilot static libraries
 
-- Created the .spec file
+%description -l pl devel
+Biblioteki statyczne pakietu gnome-pilot.
 
 %prep
-%setup
+%setup -q
+%patch1 -p1
 
 %build
-# Needed for snapshot releases.
-if [ ! -f configure ]; then
-  CFLAGS="$RPM_OPT_FLAGS" ./autogen.sh --prefix=%prefix --sysconfdir=$RPM_BUILD_ROOT/etc
-else
-  CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%prefix --sysconfdir=$RPM_BUILD_ROOT/etc
-fi
-
-if [ "$SMP" != "" ]; then
-  (make "MAKE=make -k -j $SMP"; exit 0)
-  make
-else
-  make
-fi
+gettextize --copy --force
+automake
+LDFLAGS="-s"; export LDFLAGS
+%configure
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make prefix=$RPM_BUILD_ROOT%{prefix} install
+make DESTDIR=$RPM_BUILD_ROOT install
+
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.* \
+	$RPM_BUILD_ROOT%{_libdir}/gnome-pilot/conduits/lib*.so.*.*
+
+gzip -9nf AUTHORS ChangeLog NEWS README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog NEWS README
-%{prefix}/bin
-%{prefix}/lib
-%{prefix}/share
-%config /etc
+%defattr(644,root,root,755)
+%doc *.gz
+%attr(755,root,root) %{_bindir}/backup-conduit-control-applet
+%attr(755,root,root) %{_bindir}/email-conduit-control-applet
+%attr(755,root,root) %{_bindir}/expense-conduit-control-applet
+%attr(755,root,root) %{_bindir}/file-conduit-control-applet
+%attr(755,root,root) %{_bindir}/gnome-pilot-make-password
+%attr(755,root,root) %{_bindir}/gpilot-install-file
+%attr(755,root,root) %{_bindir}/gpilotd
+%attr(755,root,root) %{_bindir}/gpilotd-client
+%attr(755,root,root) %{_bindir}/gpilotd-control-applet
+%attr(755,root,root) %{_bindir}/gpilotd-session-wrapper
+%attr(755,root,root) %{_bindir}/gpilotdcm-client
+%attr(755,root,root) %{_bindir}/memo_file_capplet
+%attr(755,root,root) %{_bindir}/pilot_applet
+%{_sysconfdir}/CORBA/servers/*
+
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%dir %{_libdir}/gnome-pilot
+%dir %{_libdir}/gnome-pilot/conduits
+%attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so*
+
+%{_datadir}/applets/Utility/*
+%{_datadir}/control-center/Peripherals/PalmPilot
+%{_datadir}/gnome-pilot
+%{_datadir}/gob/*
+%{_datadir}/mime-info/*
+%{_datadir}/pixmaps/*
 
 %files devel
-%defattr(-, root, root)
-%{prefix}/include/
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/gnome-pilot-config
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_includedir}/*
+%{_datadir}/idl/*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
+%{_libdir}/gnome-pilot/conduits/lib*.a
