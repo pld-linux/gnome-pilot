@@ -1,0 +1,61 @@
+--- ./libgpilotdCM/Makefile.am.org	Sun Mar 12 03:17:56 2000
++++ ./libgpilotdCM/Makefile.am	Mon Mar 11 14:17:11 2002
+@@ -21,14 +21,14 @@
+ 	gnome-pilot-conduit-config-private.h 		\
+ 	gnome-pilot-conduit-config.h
+ 
+-BUILT_SRCS += $(GOB_BUILT_SRCS)
++BUILT_SRCS = $(GOB_BUILT_SRCS)
+ 
+ gobfiledir = $(datadir)/gob
+ gobfile_DATA =	 			\
+ 	gnome-pilot-conduit-management.gob 	\
+ 	gnome-pilot-conduit-config.gob 
+ 
+-CLEANFILES+= \
++CLEANFILES = \
+ 	$(BUILT_SRCS)
+ 
+ $(GOB_BUILT_SRCS): $(gobfile_DATA)
+--- ./gpilotd/Makefile.am.org	Thu Jul  6 06:58:11 2000
++++ ./gpilotd/Makefile.am	Mon Mar 11 14:16:34 2002
+@@ -38,13 +38,13 @@
+ GOB_BUILT_SRCS = \
+ 	$(GOB_LIBGPILOTD_BUILT_SRCS) 
+ 
+-BUILT_SOURCS += $(GOB_BUILT_SRCS)
++BUILT_SOURCS = $(GOB_BUILT_SRCS)
+ 
+ gobfiledir = $(datadir)/gob
+ gobfile_DATA = \
+ 	gnome-pilot-client.gob 
+ 
+-CLEAN_FILES+= \
++CLEAN_FILES = \
+ 	$(GOB_BUILT_SRCS)
+ 
+ $(GOB_BUILT_SRCS): $(gobfile_DATA)
+@@ -61,7 +61,7 @@
+ 
+ GPILOTD_ORB_SRCLIST = orbit_daemon_glue.c orbit_daemon_glue.h
+ 
+-CLEANFILES += $(CORBA_SRCLIST)
++CLEANFILES = $(CORBA_SRCLIST)
+ 
+ $(CORBA_SRCLIST): $(idl_DATA)
+ 	$(ORBIT_IDL) $(idl_DATA)
+--- ./conduits/file/Makefile.am.org	Mon Mar 11 14:10:35 2002
++++ ./conduits/file/Makefile.am	Mon Mar 11 14:20:14 2002
+@@ -62,9 +62,9 @@
+ Conduitdir = $(datadir)/gnome-pilot/conduits/
+ Conduit_DATA = file.conduit
+ 
+-EXTRA_DIST = \
+-	$(Conduit_DATA) \
+-        $(ccenterConduits_DATA)
++#EXTRA_DIST = \
++#	$(Conduit_DATA) \
++#	$(ccenterConduits_DATA)
+ 
+ appicondir = $(datadir)/pixmaps
+ 
