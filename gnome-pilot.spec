@@ -15,17 +15,13 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{versio
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 2.0.0
-#BuildRequires:	autoconf
-#BuildRequires:	automake
 BuildRequires:	bonobo-activation-devel >= 1.0.3
-#BuildRequires:	gettext-devel
 BuildRequires:	gnome-panel-devel >= 2.0.10
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gob2 >= 2.0.3
 Buildrequires:	libbonobo-devel >= 2.0.0
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.0.0
-#BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pilot-link-devel >= 0.11.4
 Requires(post,postun): /sbin/ldconfig
@@ -119,12 +115,6 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 %setup -q
 
 %build
-rm -f missing
-#%%{__gettextize}
-#%%{__libtoolize}
-#%%{__aclocal}
-#%%{__autoconf}
-#%%{__automake}
 %configure \
 	--enable-usb \
 	--enable-network
@@ -136,6 +126,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-pilot/conduits/*.{la,a}
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -173,11 +165,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_libdir}/gnome-pilot/conduits/lib*.la
 %{_includedir}/*
 %{_pkgconfigdir}/*
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libdir}/gnome-pilot/conduits/lib*.a
