@@ -7,21 +7,21 @@ Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
 Version:	2.0.10
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	840ed31beddf1398ea4bb3c01b6caa70
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel
-BuildRequires:	ORBit2-devel >= 2.0.0
+BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	bonobo-activation-devel >= 1.0.3
-BuildRequires:	gnome-panel-devel >= 2.0.10
+BuildRequires:	gnome-panel-devel >= 2.3.4.1-2
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gob2 >= 2.0.3
 Buildrequires:	libbonobo-devel >= 2.0.0
 BuildRequires:	libglade2-devel >= 2.0.0
-BuildRequires:	libgnomeui-devel >= 2.0.0
+BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libxml2-devel
 BuildRequires:	pilot-link-devel >= 0.11.8
 Requires(post,postun):	/sbin/ldconfig
