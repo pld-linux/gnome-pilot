@@ -1,7 +1,7 @@
 Summary:	GNOME pilot programs
 Summary(da):	GNOME pilot programmer
 Name:		gnome-pilot
-Version:	0.1.49
+Version:	0.1.50
 Release:	1
 License:	GPL
 Group:		Applications/Communications
