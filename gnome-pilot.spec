@@ -14,21 +14,22 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{versio
 # Source0-md5:	840ed31beddf1398ea4bb3c01b6caa70
 URL:		http://www.gnome.org/gnome-pilot/
 Patch0:		%{name}-locale_names.patch
-BuildRequires:	GConf2-devel
+Patch1:		%{name}-gcc34.patch
+BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	automake
-BuildRequires:	gnome-panel-devel >= 2.3.4.1-2
+BuildRequires:	gnome-panel-devel >= 2.4.0
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gob2 >= 2.0.3
 BuildRequires:	libbonobo-devel >= 2.0.0
 BuildRequires:	libglade2-devel >= 2.0.0
-BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
+BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libxml2-devel
 BuildRequires:	pilot-link-devel >= 0.11.8
 BuildRequires:	pkgconfig
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	/usr/bin/scrollkeeper-update
-Requires(post):	GConf2 >= 2.3.0
+Requires(post):	GConf2 >= 2.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -69,8 +70,8 @@ Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo do GNOME pilot
 Summary(uk):	Файли розробки для GNOME pilot
 Summary(zh_CN):	GNOME pilot©╙╥╒©Б
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
-Requires:	libgnomeui-devel >= 2.3.3.1-2
+Requires:	%{name} = %{version}-%{release}
+Requires:	libgnomeui-devel >= 2.4.0
 Requires:	pilot-link-devel >= 0.11.8
 
 %description devel
@@ -99,7 +100,7 @@ Summary(pt_BR):	Bibliotecas estАticas do GNOME pilot
 Summary(ru):	Статические библиотеки для GNOME pilot
 Summary(uk):	Статичн╕ б╕бл╕отеки для GNOME pilot
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 GNOME pilot static libraries
@@ -119,6 +120,7 @@ Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 mv -f po/{no,nb}.po
 
