@@ -129,7 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome-pilot
 %{_datadir}/mime-info/*
 %{_datadir}/oaf/*
-%{_datadir}/pixmaps/*
+%{_pixmapsdir}/*
 
 %files devel
 %defattr(644,root,root,755)
