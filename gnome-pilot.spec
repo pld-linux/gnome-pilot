@@ -12,7 +12,7 @@ Group:		Applications/Communications
 Source0:	http://www.gnome.org/gnome-pilot/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-am_fix.patch
-URL:		http://www.gnome.org/gnome-pilot
+URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
