@@ -18,7 +18,7 @@ BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	gnome-panel-devel >= 2.3.4.1-2
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gob2 >= 2.0.3
-Buildrequires:	libbonobo-devel >= 2.0.0
+BuildRequires:	libbonobo-devel >= 2.0.0
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libxml2-devel
