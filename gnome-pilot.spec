@@ -6,26 +6,28 @@ Summary(ru):	ðÒÏÇÒÁÍÍÙ GNOME ÄÌÑ ÒÁÂÏÔÙ Ó PalmPilot
 Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
-Version:	0.1.69
+Version:	2.0.0
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/0.1/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/gnome-pilot/
-BuildRequires:	ORBit-devel >= 0.4.3
+BuildRequires:	GConf2-devel
+BuildRequires:	ORBit2-devel >= 2.0.0
 #BuildRequires:	autoconf
 #BuildRequires:	automake
+BuildRequires:	bonobo-activation-devel >= 1.0.3
 #BuildRequires:	gettext-devel
-BuildRequires:	gnome-core-devel >= 1.0.7
-BuildRequires:	gnome-libs-devel
-BuildRequires:	gob >= 1.0.4
-BuildRequires:	libglade-gnome-devel
+BuildRequires:	gnome-panel-devel >= 2.0.10
+BuildRequires:	gnome-vfs2-devel
+BuildRequires:	gob2 >= 2.0.3
+Buildrequires:	libbonobo-devel >= 2.0.0
+BuildRequires:	libglade2-devel >= 2.0.0
+BuildRequires:	libgnomeui-devel >= 2.0.0
 #BuildRequires:	libtool
-BuildRequires:	libxml-devel
-BuildRequires:	pilot-link-devel >= 0.11.3
+BuildRequires:	libxml2-devel
+BuildRequires:	pilot-link-devel >= 0.11.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_sysconfdir	/etc/X11/GNOME
 
 %description
 GNOME pilot is a collection of programs and daemon for integrating
@@ -114,57 +116,62 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 %setup -q
 
 %build
-#rm -f missing
-#%{__gettextize}
-#%{__libtoolize}
-#%{__aclocal} -I macros
-#%{__autoconf}
-#%{__automake}
-%configure
-%{__make} PISOCK_LIBS="-lpisock -lpisync"
+rm -f missing
+#%%{__gettextize}
+#%%{__libtoolize}
+#%%{__aclocal}
+#%%{__autoconf}
+#%%{__automake}
+%configure \
+	--enable-usb \
+	--enable-network
+
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	pPalmPilotdir=%{_applnkdir}/Settings/GNOME/Peripherals
-
-%find_lang %{name}
+	pPalmPilotdir=%{_applnkdir}/Settings/GNOME
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
+%post
+/sbin/ldconfig
+%gconf_schema_install
+
 %postun	-p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/CORBA/servers/*
+%{_sysconfdir}/gconf/schemas/*
 
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/gpilot*
 %dir %{_libdir}/gnome-pilot
 %dir %{_libdir}/gnome-pilot/conduits
 %attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so
+%{_libdir}/bonobo/servers/*
 
-%{_datadir}/applets/Utility/*
 %{_datadir}/control-center/Peripherals/*
-%{_applnkdir}/Settings/GNOME/Peripherals/*
+%{_applnkdir}/Settings/GNOME/*
 %{_mandir}/man1/*
 %{_datadir}/gnome-pilot
+%{_datadir}/gnome-pilot-2
 %{_datadir}/mime-info/*
 %{_datadir}/idl/*
-%{_datadir}/oaf/*
 %{_pixmapsdir}/*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%attr(755,root,root) %{_libdir}/*.sh
 %{_includedir}/*
+%{_pkgconfigdir}/*
 
 %files static
 %defattr(644,root,root,755)
