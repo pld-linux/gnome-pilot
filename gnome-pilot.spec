@@ -11,6 +11,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	11bdb93424803637f2c679d016cb2cea
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 2.0.0
