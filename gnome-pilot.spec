@@ -22,9 +22,9 @@ BuildRequires:	gnome-core-devel >= 1.0.7
 BuildRequires:	gnome-libs-devel
 BuildRequires:	gob >= 1.0.4
 BuildRequires:	libglade-gnome-devel
+BuildRequires:	libtool
 BuildRequires:	libxml-devel
 BuildRequires:	pilot-link-devel >= 0.9.0
-BuildRequires:	sed
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -124,7 +124,7 @@ mv -f configure.in.tmp configure.in
 rm -f missing
 %{__gettextize}
 %{__libtoolize}
-aclocal -I macros
+%{__aclocal} -I macros
 %{__autoconf}
 %{__automake}
 %configure
@@ -141,8 +141,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
