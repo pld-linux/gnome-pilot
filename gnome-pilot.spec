@@ -10,18 +10,20 @@ Release:	3
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://www.gnome.org/gnome-pilot/download/%{name}-%{version}.tar.gz
-Patch1:		%{name}-DESTDIR.patch
+Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-am_fix.patch
 URL:		http://www.gnome.org/gnome-pilot
-BuildRequires:	pilot-link-devel >= 0.9.0
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-core-devel >= 1.0.7
 BuildRequires:	gnome-libs-devel
-BuildRequires:	libglade-devel
-BuildRequires:	ORBit-devel >= 0.4.3
 BuildRequires:	gob >= 1.0.4
-BuildRequires:	gettext-devel
-BuildRequires:	automake
-BuildRequires:	pilot-link-devel
+BuildRequires:	libglade-devel
 BuildRequires:	libxml-devel
+BuildRequires:	ORBit-devel >= 0.4.3
+BuildRequires:	pilot-link-devel >= 0.9.0
+BuildRequires:	sed
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -111,10 +113,16 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch1 -p1
 
 %build
+sed -e s/AM_GNOME_GETTEXT/AM_GNU_GETTEXT/ configure.in > configure.in.tmp
+mv -f configure.in.tmp configure.in
+rm -f missing
 gettextize --copy --force
+aclocal -I macros
+autoconf
 automake -a -c
 %configure
 %{__make}
