@@ -3,7 +3,7 @@ Summary(da):	GNOME pilot programmer
 Summary(pl):	Programy pilota GNOME
 Name:		gnome-pilot
 Version:	0.1.54
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://www.gnome.org/gnome-pilot/download/%{name}-%{version}.tar.gz
