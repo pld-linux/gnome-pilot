@@ -1,6 +1,9 @@
 Summary:	GNOME pilot programs
 Summary(da):	GNOME pilot programmer
 Summary(pl):	Programy pilota GNOME
+Summary(pt_BR):	Programas do GNOME Pilot
+Summary(ru):	Программы GNOME для работы с PalmPilot
+Summary(uk):	Програми GNOME для роботи з PalmPilot
 Name:		gnome-pilot
 Version:	0.1.54
 Release:	3
@@ -41,9 +44,25 @@ kraftiger og nemmere at sФtte op.
 GNOME pilot jest kolekcj╠ programСw i demonСw integruj╠cych GNOME z
 PalmPilotem(TM).
 
+%description -l pt_BR
+GNOME pilot И um conjunto de programas para integrar o GNOME ao
+PalmPilot(tm).
+
+%description -l ru
+GNOME pilot - это коллекция программ и демон для интеграции GNOME и
+PalmPilot (tm).
+
+%description -l uk
+GNOME pilot - це колекц╕я програм та демон для ╕нтеграц╕╖ GNOME та
+PalmPilot (tm).
+
 %package devel
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
+Summary(ru):	Файлы разработки для GNOME pilot
+Summary(pl):	Biblioteki i pliki nagЁСwkowe gpilotd
+Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo do GNOME pilot
+Summary(uk):	Файли розробки для GNOME pilot
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
@@ -56,17 +75,39 @@ gpilotd include filer og biblioteker.
 %description devel -l pl
 Biblioteki i pliki nagЁСwkowe gpilotd.
 
+%description devel -l pt_BR
+Bibliotecas e arquivos de inclusЦo para desenvolvimento baseado no
+GNOME pilot.
+
+%description devel -l ru
+Файлы разработки для GNOME pilot.
+
+%description devel -l uk
+Файли розробки для GNOME pilot.
+
 %package static
 Summary:	GNOME pilot static libraries
 Summary(pl):	Biblioteki statyczne pakietu gnome-pilot
+Summary(pt_BR):	Bibliotecas estАticas do GNOME pilot
+Summary(ru):	Статические библиотеки для GNOME pilot
+Summary(uk):	Статичн╕ б╕бл╕отеки для GNOME pilot
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
 GNOME pilot static libraries
 
-%description devel -l pl
+%description static -l pl
 Biblioteki statyczne pakietu gnome-pilot.
+
+%description static -l pt_BR
+Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
+
+%description static -l ru
+Статические библиотеки для GNOME pilot.
+
+%description static -l uk
+Статичн╕ б╕бл╕отеки для GNOME pilot.
 
 %prep
 %setup -q
