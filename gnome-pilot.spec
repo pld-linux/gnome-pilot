@@ -6,15 +6,14 @@ Summary(ru):	ðÒÏÇÒÁÍÍÙ GNOME ÄÌÑ ÒÁÂÏÔÙ Ó PalmPilot
 Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
-Version:	2.0.10
-Release:	5
+Version:	2.0.11
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	840ed31beddf1398ea4bb3c01b6caa70
+# Source0-md5:	74ddcee24decb9524f993a4d3ced17b2
 URL:		http://www.gnome.org/gnome-pilot/
 Patch0:		%{name}-locale_names.patch
-Patch1:		%{name}-gcc34.patch
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	automake
@@ -120,7 +119,6 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 mv -f po/{no,nb}.po
 
