@@ -15,7 +15,6 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{versio
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 2.7.5-1
-BuildRequires:	bonobo-activation-devel >= 1.0.3
 BuildRequires:	gnome-panel-devel >= 2.3.4.1-2
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gob2 >= 2.0.3
@@ -24,6 +23,7 @@ BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libxml2-devel
 BuildRequires:	pilot-link-devel >= 0.11.8
+BuildRequires:	pkgconfig
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	/usr/bin/scrollkeeper-update
 Requires(post):	GConf2 >= 2.3.0
@@ -68,6 +68,8 @@ Summary(uk):	æÁÊÌÉ ÒÏÚÒÏÂËÉ ÄÌÑ GNOME pilot
 Summary(zh_CN):	GNOME pilot¿ª·¢¿â
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	libgnomeui-devel >= 2.3.3.1-2
+Requires:	pilot-link-devel >= 0.11.8
 
 %description devel
 gpilotd libraries and includes.
@@ -148,22 +150,20 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/gconf/schemas/*
-
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/gpilot*
 %dir %{_libdir}/gnome-pilot
 %dir %{_libdir}/gnome-pilot/conduits
 %attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so
 %{_libdir}/bonobo/servers/*
-
 %{_datadir}/control-center-2.0/capplets/*
-%{_mandir}/man1/*
 %{_datadir}/gnome-pilot
 %{_datadir}/mime-info/*
 %{_datadir}/idl/*
+%{_sysconfdir}/gconf/schemas/*
 %{_omf_dest_dir}/%{name}
 %{_pixmapsdir}/*
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
