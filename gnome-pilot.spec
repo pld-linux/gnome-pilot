@@ -6,12 +6,12 @@ Summary(ru):	ðÒÏÇÒÁÍÍÙ GNOME ÄÌÑ ÒÁÂÏÔÙ Ó PalmPilot
 Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
-Version:	2.0.9
-Release:	0.2
+Version:	2.0.10
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	08f768058aa00b6a9df4e6f9ebc29c94
+# Source0-md5:	840ed31beddf1398ea4bb3c01b6caa70
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 2.0.0
@@ -23,9 +23,10 @@ Buildrequires:	libbonobo-devel >= 2.0.0
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.0.0
 BuildRequires:	libxml2-devel
-BuildRequires:	pilot-link-devel >= 0.11.4
-Requires(post,postun): /sbin/ldconfig
-Requires(post): GConf2 >= 2.3.0
+BuildRequires:	pilot-link-devel >= 0.11.8
+Requires(post,postun):	/sbin/ldconfig
+Requires(post,postun):	/usr/bin/scrollkeeper-update
+Requires(post):	GConf2 >= 2.3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -136,9 +137,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
+/usr/bin/scrollkeeper-update
 %gconf_schema_install
 
-%postun	-p /sbin/ldconfig
+%postun
+/sbin/ldconfig
+/usr/bin/scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
