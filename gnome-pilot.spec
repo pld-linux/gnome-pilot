@@ -74,7 +74,7 @@ Biblioteki statyczne pakietu gnome-pilot.
 
 %build
 gettextize --copy --force
-automake
+automake -a -c
 %configure
 %{__make}
 
