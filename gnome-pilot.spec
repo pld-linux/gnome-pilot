@@ -6,22 +6,22 @@ Summary(ru):	Программы GNOME для работы с PalmPilot
 Summary(uk):	Програми GNOME для роботи з PalmPilot
 Name:		gnome-pilot
 Version:	0.1.54
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://www.gnome.org/gnome-pilot/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-am_fix.patch
 URL:		http://www.gnome.org/gnome-pilot/
+BuildRequires:	ORBit-devel >= 0.4.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-core-devel >= 1.0.7
 BuildRequires:	gnome-libs-devel
 BuildRequires:	gob >= 1.0.4
-BuildRequires:	libglade-devel
+BuildRequires:	libglade-gnome-devel
 BuildRequires:	libxml-devel
-BuildRequires:	ORBit-devel >= 0.4.3
 BuildRequires:	pilot-link-devel >= 0.9.0
 BuildRequires:	sed
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -135,8 +135,6 @@ rm -rf $RPM_BUILD_ROOT
 	pPalmPilotdir=%{_applnkdir}/Settings/GNOME/Peripherals \
 	paneldir=%{_applnkdir}/Settings/GNOME/Peripherals/Conduits \
 
-gzip -9nf AUTHORS ChangeLog NEWS README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -145,7 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/backup-conduit-control-applet
 %attr(755,root,root) %{_bindir}/email-conduit-control-applet
 %attr(755,root,root) %{_bindir}/expense-conduit-control-applet
