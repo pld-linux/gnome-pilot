@@ -1,53 +1,63 @@
-diff -Nru gnome-pilot-0.1.49/capplet/Makefile.am gnome-pilot-0.1.49.new/capplet/Makefile.am
---- gnome-pilot-0.1.49/capplet/Makefile.am	Tue Mar 14 18:17:47 2000
-+++ gnome-pilot-0.1.49.new/capplet/Makefile.am	Sun Mar 26 15:17:17 2000
-@@ -57,8 +57,8 @@
+diff -Nru gnome-pilot-0.1.54/capplet/Makefile.am gnome-pilot-0.1.54.new/capplet/Makefile.am
+--- gnome-pilot-0.1.54/capplet/Makefile.am	Sat Jul  1 02:58:49 2000
++++ gnome-pilot-0.1.54.new/capplet/Makefile.am	Sun Oct 29 15:27:10 2000
+@@ -63,13 +63,13 @@
  appicon_DATA = gnome-palm.png
  
  install-data-local:
--	$(mkinstalldirs) $(PalmPilotdir)
 -	$(mkinstalldirs) $(Conduitsdir)
+-	$(mkinstalldirs) $(pConduitsdir)
 -	$(mkinstalldirs) $(gladedir)
--	$(INSTALL_DATA) $(srcdir)/PalmPilot.directory $(PalmPilotdir)/.directory
 -	$(INSTALL_DATA) $(srcdir)/Conduits.directory $(Conduitsdir)/.directory
-+	$(mkinstalldirs) $(DESTDIR)$(PalmPilotdir)
+-	$(INSTALL_DATA) $(srcdir)/Conduits.directory $(pConduitsdir)/.directory
 +	$(mkinstalldirs) $(DESTDIR)$(Conduitsdir)
++	$(mkinstalldirs) $(DESTDIR)$(pConduitsdir)
 +	$(mkinstalldirs) $(DESTDIR)$(gladedir)
-+	$(INSTALL_DATA) $(srcdir)/PalmPilot.directory $(DESTDIR)$(PalmPilotdir)/.directory
 +	$(INSTALL_DATA) $(srcdir)/Conduits.directory $(DESTDIR)$(Conduitsdir)/.directory
-diff -Nru gnome-pilot-0.1.49/conduits/backup/Makefile.am gnome-pilot-0.1.49.new/conduits/backup/Makefile.am
---- gnome-pilot-0.1.49/conduits/backup/Makefile.am	Tue Mar 14 18:17:47 2000
-+++ gnome-pilot-0.1.49.new/conduits/backup/Makefile.am	Sun Mar 26 15:17:47 2000
-@@ -49,6 +49,3 @@
++	$(INSTALL_DATA) $(srcdir)/Conduits.directory $(DESTDIR)$(pConduitsdir)/.directory
+ 
+-#	$(mkinstalldirs) $(PalmPilotdir)
+-#	$(mkinstalldirs) $(pPalmPilotdir)
+-#	$(INSTALL_DATA) $(srcdir)/PalmPilot.directory $(PalmPilotdir)/.directory
+-#	$(INSTALL_DATA) $(srcdir)/PalmPilot.directory $(pPalmPilotdir)/.directory
++#	$(mkinstalldirs) $(DESTDIR)$(PalmPilotdir)
++#	$(mkinstalldirs) $(DESTDIR)$(pPalmPilotdir)
++#	$(INSTALL_DATA) $(srcdir)/PalmPilot.directory $(DESTDIR)$(PalmPilotdir)/.directory
++#	$(INSTALL_DATA) $(srcdir)/PalmPilot.directory $(DESTDIR)$(pPalmPilotdir)/.directory
+diff -Nru gnome-pilot-0.1.54/conduits/backup/Makefile.am gnome-pilot-0.1.54.new/conduits/backup/Makefile.am
+--- gnome-pilot-0.1.54/conduits/backup/Makefile.am	Wed Jul  5 20:38:57 2000
++++ gnome-pilot-0.1.54.new/conduits/backup/Makefile.am	Sun Oct 29 15:27:51 2000
+@@ -54,7 +54,3 @@
+ EXTRA_DIST = \
  	$(Conduit_DATA) \
          $(ccenterConduits_DATA)
- 
+-
 -install-data-local:
 -	$(mkinstalldirs) $(Conduitdir)
 -	$(mkinstalldirs) $(ccenterConduitsdir)
-diff -Nru gnome-pilot-0.1.49/conduits/email/Makefile.am gnome-pilot-0.1.49.new/conduits/email/Makefile.am
---- gnome-pilot-0.1.49/conduits/email/Makefile.am	Tue Mar 14 18:17:47 2000
-+++ gnome-pilot-0.1.49.new/conduits/email/Makefile.am	Sun Mar 26 15:17:57 2000
-@@ -47,6 +47,3 @@
+diff -Nru gnome-pilot-0.1.54/conduits/email/Makefile.am gnome-pilot-0.1.54.new/conduits/email/Makefile.am
+--- gnome-pilot-0.1.54/conduits/email/Makefile.am	Sat Jul  1 02:58:51 2000
++++ gnome-pilot-0.1.54.new/conduits/email/Makefile.am	Sun Oct 29 15:28:02 2000
+@@ -52,5 +52,3 @@
+ 	$(ccenterConduits_DATA) \
+ 	$(Conduit_DATA)
+ 
+-install-data-local:
+-	$(mkinstalldirs) $(Conduitsdir)
+diff -Nru gnome-pilot-0.1.54/conduits/expense/Makefile.am gnome-pilot-0.1.54.new/conduits/expense/Makefile.am
+--- gnome-pilot-0.1.54/conduits/expense/Makefile.am	Sat Jul  1 02:58:51 2000
++++ gnome-pilot-0.1.54.new/conduits/expense/Makefile.am	Sun Oct 29 15:28:13 2000
+@@ -50,6 +50,3 @@
  EXTRA_DIST = \
  	$(ccenterConduits_DATA) \
  	$(Conduit_DATA)
 -
 -install-data-local:
 -	$(mkinstalldirs) $(Conduitsdir)
-diff -Nru gnome-pilot-0.1.49/conduits/expense/Makefile.am gnome-pilot-0.1.49.new/conduits/expense/Makefile.am
---- gnome-pilot-0.1.49/conduits/expense/Makefile.am	Tue Mar 14 18:17:47 2000
-+++ gnome-pilot-0.1.49.new/conduits/expense/Makefile.am	Sun Mar 26 15:18:05 2000
-@@ -47,5 +47,3 @@
- 	$(ccenterConduits_DATA) \
- 	$(Conduit_DATA)
- 
--install-data-local:
--	$(mkinstalldirs) $(Conduitsdir)
-diff -Nru gnome-pilot-0.1.49/conduits/file/Makefile.am gnome-pilot-0.1.49.new/conduits/file/Makefile.am
---- gnome-pilot-0.1.49/conduits/file/Makefile.am	Tue Mar 14 18:17:47 2000
-+++ gnome-pilot-0.1.49.new/conduits/file/Makefile.am	Sun Mar 26 15:18:20 2000
-@@ -71,11 +71,6 @@
+diff -Nru gnome-pilot-0.1.54/conduits/file/Makefile.am gnome-pilot-0.1.54.new/conduits/file/Makefile.am
+--- gnome-pilot-0.1.54/conduits/file/Makefile.am	Sat Jul  1 02:58:52 2000
++++ gnome-pilot-0.1.54.new/conduits/file/Makefile.am	Sun Oct 29 15:28:25 2000
+@@ -76,11 +76,6 @@
  Mimedir = $(datadir)/mime-info
  Mime_DATA = palm.keys
  
@@ -59,10 +69,10 @@ diff -Nru gnome-pilot-0.1.49/conduits/file/Makefile.am gnome-pilot-0.1.49.new/co
  EXTRA_DIST = \
  	$(Conduit_DATA) \
          $(ccenterConduits_DATA) \
-diff -Nru gnome-pilot-0.1.49/conduits/memo_file/Makefile.am gnome-pilot-0.1.49.new/conduits/memo_file/Makefile.am
---- gnome-pilot-0.1.49/conduits/memo_file/Makefile.am	Tue Mar 14 18:17:47 2000
-+++ gnome-pilot-0.1.49.new/conduits/memo_file/Makefile.am	Sun Mar 26 15:18:29 2000
-@@ -45,6 +45,3 @@
+diff -Nru gnome-pilot-0.1.54/conduits/memo_file/Makefile.am gnome-pilot-0.1.54.new/conduits/memo_file/Makefile.am
+--- gnome-pilot-0.1.54/conduits/memo_file/Makefile.am	Sat Jul  1 02:58:53 2000
++++ gnome-pilot-0.1.54.new/conduits/memo_file/Makefile.am	Sun Oct 29 15:28:33 2000
+@@ -49,6 +49,3 @@
  EXTRA_DIST = \
          $(ccenterConduits_DATA) \
  	$(Conduit_DATA)
