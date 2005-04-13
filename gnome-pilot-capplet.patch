@@ -1,10 +1,10 @@
-diff -ur gnome-pilot-2.0.12.orig/capplet/gpilotd-control-applet.desktop.in gnome-pilot-2.0.12/capplet/gpilotd-control-applet.desktop.in
---- gnome-pilot-2.0.12.orig/capplet/gpilotd-control-applet.desktop.in	2003-04-30 16:59:28.000000000 +0200
-+++ gnome-pilot-2.0.12/capplet/gpilotd-control-applet.desktop.in	2004-09-16 23:29:47.220704560 +0200
-@@ -7,7 +7,7 @@
+diff -urN gnome-pilot-2.0.13.orig/capplet/gpilotd-control-applet.desktop.in gnome-pilot-2.0.13/capplet/gpilotd-control-applet.desktop.in
+--- gnome-pilot-2.0.13.orig/capplet/gpilotd-control-applet.desktop.in	2005-04-13 18:18:02.000000000 +0200
++++ gnome-pilot-2.0.13/capplet/gpilotd-control-applet.desktop.in	2005-04-13 18:19:03.000000000 +0200
+@@ -6,7 +6,7 @@
+ Icon=gnome-palm
  Terminal=false
  Type=Application
- Icon=gnome-palm.png
 -Categories=GNOME;Application;Settings;
 +Categories=GTK;GNOME;Settings;X-Capplet;
  X-GNOME-Bugzilla-Bugzilla=GNOME
