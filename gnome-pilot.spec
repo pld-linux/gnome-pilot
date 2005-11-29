@@ -7,7 +7,7 @@ Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
 Version:	2.0.13
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
@@ -27,9 +27,10 @@ BuildRequires:	libxml2-devel
 BuildRequires:	pilot-link-devel >= 0.11.8
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
-Requires(post,postun):	/sbin/ldconfig
+BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.10.0
 Requires(post,postun):	scrollkeeper
+Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -61,6 +62,17 @@ PalmPilot (tm).
 GNOME pilot - ÃÅ ËÏÌÅËÃ¦Ñ ÐÒÏÇÒÁÍ ÔÁ ÄÅÍÏÎ ÄÌÑ ¦ÎÔÅÇÒÁÃ¦§ GNOME ÔÁ
 PalmPilot (tm).
 
+%package libs
+Summary:	GNOME pilot library
+Summary(pl):	Biblioteka GNOME pilot
+Group:		Development/Libraries
+
+%description libs
+GNOME pilot library.
+
+%description libs -l da
+Biblioteka GNOME pilot.
+
 %package devel
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
@@ -70,7 +82,7 @@ Summary(pt_BR):	Bibliotecas e arquivos de inclusão do GNOME pilot
 Summary(uk):	æÁÊÌÉ ÒÏÚÒÏÂËÉ ÄÌÑ GNOME pilot
 Summary(zh_CN):	GNOME pilot¿ª·¢¿â
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libgnomeui-devel >= 2.10.0-2
 Requires:	pilot-link-devel >= 0.11.8
 
@@ -148,7 +160,6 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
 %scrollkeeper_update_post
 %gconf_schema_install pilot.schemas
 
@@ -156,26 +167,31 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_uninstall pilot.schemas
 
 %postun
-/sbin/ldconfig
 %scrollkeeper_update_postun
+
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/gpilot*
 %dir %{_libdir}/gnome-pilot
 %dir %{_libdir}/gnome-pilot/conduits
 %attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so
 %{_libdir}/bonobo/servers/*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_datadir}/gnome-pilot
 %{_datadir}/idl/*
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/pilot.schemas
 %{_omf_dest_dir}/%{name}
 %{_pixmapsdir}/*
 %{_mandir}/man1/*
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
