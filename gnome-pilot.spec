@@ -6,29 +6,31 @@ Summary(ru):	ðÒÏÇÒÁÍÍÙ GNOME ÄÌÑ ÒÁÂÏÔÙ Ó PalmPilot
 Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
-Version:	2.0.12
+Version:	2.0.13
 Release:	4
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	2dbb9eb5f7a96b98cfb6388f7c09395e
+# Source0-md5:	662aae1d5915e81e64ee1a6c732c627d
 Patch0:		%{name}-capplet.patch
 URL:		http://www.gnome.org/gnome-pilot/
-BuildRequires:	GConf2-devel >= 2.4.0
-BuildRequires:	ORBit2-devel >= 2.7.5-1
+BuildRequires:	GConf2-devel >= 2.14.0
+BuildRequires:	ORBit2-devel >= 1:2.14.0
 BuildRequires:	automake
-BuildRequires:	gnome-panel-devel >= 2.4.0
-BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gob2 >= 2.0.3
-BuildRequires:	libbonobo-devel >= 2.0.0
-BuildRequires:	libglade2-devel >= 2.0.0
-BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	gnome-panel-devel >= 2.14.0
+BuildRequires:	gnome-vfs2-devel >= 2.14.0
+BuildRequires:	gob2 >= 2.0.11
+BuildRequires:	libbonobo-devel >= 2.8.1
+BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeui-devel >= 2.14.0
 BuildRequires:	libxml2-devel
 BuildRequires:	pilot-link-devel >= 0.11.8
 BuildRequires:	pkgconfig
-Requires(post,postun):	/sbin/ldconfig
-Requires(post,postun):	/usr/bin/scrollkeeper-update
-Requires(post):	GConf2 >= 2.4.0
+BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	scrollkeeper
+Requires(post,preun):	GConf2 >= 2.14.0
+Requires(post,postun):	scrollkeeper
+Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -60,6 +62,17 @@ PalmPilot (tm).
 GNOME pilot - ÃÅ ËÏÌÅËÃ¦Ñ ÐÒÏÇÒÁÍ ÔÁ ÄÅÍÏÎ ÄÌÑ ¦ÎÔÅÇÒÁÃ¦§ GNOME ÔÁ
 PalmPilot (tm).
 
+%package libs
+Summary:	GNOME pilot library
+Summary(pl):	Biblioteka GNOME pilot
+Group:		Development/Libraries
+
+%description libs
+GNOME pilot library.
+
+%description libs -l da
+Biblioteka GNOME pilot.
+
 %package devel
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
@@ -69,8 +82,8 @@ Summary(pt_BR):	Bibliotecas e arquivos de inclusão do GNOME pilot
 Summary(uk):	æÁÊÌÉ ÒÏÚÒÏÂËÉ ÄÌÑ GNOME pilot
 Summary(zh_CN):	GNOME pilot¿ª·¢¿â
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
-Requires:	libgnomeui-devel >= 2.4.0
+Requires:	%{name}-libs = %{version}-%{release}
+Requires:	libgnomeui-devel >= 2.14.0
 Requires:	pilot-link-devel >= 0.11.8
 
 %description devel
@@ -125,7 +138,6 @@ cp -f /usr/share/automake/config.sub .
 %configure \
 	--enable-usb \
 	--enable-network
-
 %{__make}
 
 %install
@@ -135,9 +147,10 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-pilot/conduits/*.{la,a}
+rm -rf $RPM_BUILD_ROOT%{_datadir}/mime-info
 
-install -d $RPM_BUILD_ROOT%{_datadir}/gnome/capplets
-mv $RPM_BUILD_ROOT%{_datadir}/control-center-2.0/capplets/*.desktop $RPM_BUILD_ROOT%{_datadir}/gnome/capplets
+install -d $RPM_BUILD_ROOT%{_desktopdir}
+mv $RPM_BUILD_ROOT%{_datadir}/control-center-2.0/capplets/*.desktop $RPM_BUILD_ROOT%{_desktopdir}
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
@@ -147,32 +160,38 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
-/usr/bin/scrollkeeper-update
-%gconf_schema_install
+%scrollkeeper_update_post
+%gconf_schema_install pilot.schemas
+
+%preun
+%gconf_schema_uninstall pilot.schemas
 
 %postun
-/sbin/ldconfig
-/usr/bin/scrollkeeper-update
+%scrollkeeper_update_postun
+
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/gpilot*
 %dir %{_libdir}/gnome-pilot
 %dir %{_libdir}/gnome-pilot/conduits
 %attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so
 %{_libdir}/bonobo/servers/*
-%{_datadir}/gnome/capplets/*
+%{_desktopdir}/*.desktop
 %{_datadir}/gnome-pilot
-%{_datadir}/mime-info/*
 %{_datadir}/idl/*
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/pilot.schemas
 %{_omf_dest_dir}/%{name}
 %{_pixmapsdir}/*
 %{_mandir}/man1/*
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
