@@ -7,28 +7,27 @@ Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
 Version:	2.0.13
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	662aae1d5915e81e64ee1a6c732c627d
 Patch0:		%{name}-capplet.patch
 URL:		http://www.gnome.org/gnome-pilot/
-BuildRequires:	GConf2-devel >= 2.10.0
-BuildRequires:	ORBit2-devel >= 1:2.12.2
+BuildRequires:	GConf2-devel >= 2.14.0
+BuildRequires:	ORBit2-devel >= 1:2.14.0
 BuildRequires:	automake
-BuildRequires:	gnome-panel-devel >= 2.10.1
-BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gob2 >= 2.0.11
-BuildRequires:	libbonobo-devel >= 2.8.1
+BuildRequires:	gnome-panel-devel >= 2.14.2
+BuildRequires:	gnome-vfs2-devel >= 2.15.2
+BuildRequires:	gob2 >= 2.0.13
 BuildRequires:	libglade2-devel >= 1:2.5.1
-BuildRequires:	libgnomeui-devel >= 2.10.0-2
-BuildRequires:	libxml2-devel
+BuildRequires:	libgnomeui-devel >= 2.15.1
+BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	pilot-link-devel >= 0.11.8
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-Requires(post,preun):	GConf2 >= 2.10.0
+Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -83,7 +82,7 @@ Summary(uk):	æÁÊÌÉ ÒÏÚÒÏÂËÉ ÄÌÑ GNOME pilot
 Summary(zh_CN):	GNOME pilot¿ª·¢¿â
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libgnomeui-devel >= 2.10.0-2
+Requires:	libgnomeui-devel >= 2.15.1
 Requires:	pilot-link-devel >= 0.11.8
 
 %description devel
