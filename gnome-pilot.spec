@@ -13,9 +13,11 @@ Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	662aae1d5915e81e64ee1a6c732c627d
 Patch0:		%{name}-capplet.patch
+Patch1:		%{name}-ldadd.patch
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.0
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-panel-devel >= 2.14.2
 BuildRequires:	gnome-vfs2-devel >= 2.15.2
@@ -131,9 +133,12 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-cp -f /usr/share/automake/config.sub .
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-usb \
 	--enable-network
