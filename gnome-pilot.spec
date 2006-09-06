@@ -6,24 +6,27 @@ Summary(ru):	ðÒÏÇÒÁÍÍÙ GNOME ÄÌÑ ÒÁÂÏÔÙ Ó PalmPilot
 Summary(uk):	ðÒÏÇÒÁÍÉ GNOME ÄÌÑ ÒÏÂÏÔÉ Ú PalmPilot
 Summary(zh_CN):	¼¯³ÉGNOMEºÍPalmPilotµÄ³ÌÐò¼¯
 Name:		gnome-pilot
-Version:	2.0.13
-Release:	6
+Version:	2.0.14
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	662aae1d5915e81e64ee1a6c732c627d
+# Source0-md5:	e0dd8c92db7c6df8840e5dcecaea2f3b
 Patch0:		%{name}-capplet.patch
 Patch1:		%{name}-ldadd.patch
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel >= 2.14.0
-BuildRequires:	ORBit2-devel >= 1:2.14.0
+BuildRequires:	ORBit2-devel >= 1:2.14.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-panel-devel >= 2.14.2
-BuildRequires:	gnome-vfs2-devel >= 2.15.2
-BuildRequires:	gob2 >= 2.0.13
-BuildRequires:	libglade2-devel >= 1:2.5.1
-BuildRequires:	libgnomeui-devel >= 2.15.1
+BuildRequires:	dbus-glib-devel >= 0.71
+BuildRequires:	gnome-panel-devel >= 2.16.0
+BuildRequires:	gnome-vfs2-devel >= 2.16.0
+BuildRequires:	gob2 >= 2.0.14
+BuildRequires:	hal-devel >= 0.5.7.1
+BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libglade2-devel >= 1:2.6.0
+BuildRequires:	libgnomeui-devel >= 2.16.0
 BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	pilot-link-devel >= 0.11.8
 BuildRequires:	pkgconfig
@@ -84,7 +87,7 @@ Summary(uk):	æÁÊÌÉ ÒÏÚÒÏÂËÉ ÄÌÑ GNOME pilot
 Summary(zh_CN):	GNOME pilot¿ª·¢¿â
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libgnomeui-devel >= 2.15.1
+Requires:	libgnomeui-devel >= 2.16.0
 Requires:	pilot-link-devel >= 0.11.8
 
 %description devel
@@ -154,9 +157,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-pilot/conduits/*.{la,a}
 rm -rf $RPM_BUILD_ROOT%{_datadir}/mime-info
 
 install -d $RPM_BUILD_ROOT%{_desktopdir}
-mv $RPM_BUILD_ROOT%{_datadir}/control-center-2.0/capplets/*.desktop $RPM_BUILD_ROOT%{_desktopdir}
-
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
