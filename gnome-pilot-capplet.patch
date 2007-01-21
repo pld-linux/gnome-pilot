@@ -1,6 +1,6 @@
-diff -urN gnome-pilot-2.0.13.orig/capplet/gpilotd-control-applet.desktop.in gnome-pilot-2.0.13/capplet/gpilotd-control-applet.desktop.in
---- gnome-pilot-2.0.13.orig/capplet/gpilotd-control-applet.desktop.in	2005-04-13 18:18:02.000000000 +0200
-+++ gnome-pilot-2.0.13/capplet/gpilotd-control-applet.desktop.in	2005-04-13 18:19:03.000000000 +0200
+diff -urN gnome-pilot-2.0.13.orig/capplet/gpilotd-control-applet.desktop.in.in gnome-pilot-2.0.13/capplet/gpilotd-control-applet.desktop.in.in
+--- gnome-pilot-2.0.13.orig/capplet/gpilotd-control-applet.desktop.in.in	2005-04-13 18:18:02.000000000 +0200
++++ gnome-pilot-2.0.13/capplet/gpilotd-control-applet.desktop.in.in	2005-04-13 18:19:03.000000000 +0200
 @@ -6,7 +6,7 @@
  Terminal=false
  StartupNotify=true
