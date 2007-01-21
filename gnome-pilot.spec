@@ -6,12 +6,12 @@ Summary(ru):	Программы GNOME для работы с PalmPilot
 Summary(uk):	Програми GNOME для роботи з PalmPilot
 Summary(zh_CN):	╪╞ЁиGNOME╨мPalmPilot╣дЁлпР╪╞
 Name:		gnome-pilot
-Version:	2.0.14
+Version:	2.0.15
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	e0dd8c92db7c6df8840e5dcecaea2f3b
+# Source0-md5:	460a1fdd2206e1bbf820639831ca88f8
 Patch0:		%{name}-capplet.patch
 Patch1:		%{name}-ldadd.patch
 URL:		http://www.gnome.org/gnome-pilot/
@@ -145,6 +145,12 @@ Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
 %configure \
 	--enable-usb \
 	--enable-network
+
+# regenerate
+rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
+rm -f gpilotd/gnome-pilot-conduit-file.c gpilotd/gnome-pilot-conduit-standard.c libgpilotdCM/gnome-pilot-conduit-management.c
+rm -f libgpilotdCM/gnome-pilot-conduit-config.c
+
 %{__make}
 
 %install
