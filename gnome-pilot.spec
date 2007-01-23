@@ -32,8 +32,8 @@ BuildRequires:	pilot-link-devel >= 0.11.8
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper
+Requires(post,preun):	GConf2 >= 2.14.0
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -80,9 +80,9 @@ Biblioteka GNOME pilot.
 %package devel
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
-Summary(ru):	Файлы разработки для GNOME pilot
 Summary(pl):	Biblioteki i pliki nagЁСwkowe gpilotd
 Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo do GNOME pilot
+Summary(ru):	Файлы разработки для GNOME pilot
 Summary(uk):	Файли розробки для GNOME pilot
 Summary(zh_CN):	GNOME pilot©╙╥╒©Б
 Group:		Development/Libraries
@@ -138,6 +138,11 @@ Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
 %patch0 -p1
 %patch1 -p1
 
+# regenerate
+rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
+rm -f gpilotd/gnome-pilot-conduit-file.c gpilotd/gnome-pilot-conduit-standard.c libgpilotdCM/gnome-pilot-conduit-management.c
+rm -f libgpilotdCM/gnome-pilot-conduit-config.c
+
 %build
 %{__aclocal}
 %{__autoconf}
@@ -145,12 +150,6 @@ Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
 %configure \
 	--enable-usb \
 	--enable-network
-
-# regenerate
-rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
-rm -f gpilotd/gnome-pilot-conduit-file.c gpilotd/gnome-pilot-conduit-standard.c libgpilotdCM/gnome-pilot-conduit-management.c
-rm -f libgpilotdCM/gnome-pilot-conduit-config.c
-
 %{__make}
 
 %install
