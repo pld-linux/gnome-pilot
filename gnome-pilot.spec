@@ -6,14 +6,14 @@ Summary(ru):	Программы GNOME для работы с PalmPilot
 Summary(uk):	Програми GNOME для роботи з PalmPilot
 Summary(zh_CN):	╪╞ЁиGNOME╨мPalmPilot╣дЁлпР╪╞
 Name:		gnome-pilot
-Version:	2.0.13
-Release:	5
+Version:	2.0.15
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	662aae1d5915e81e64ee1a6c732c627d
+# Source0-md5:	460a1fdd2206e1bbf820639831ca88f8
 Patch0:		%{name}-capplet.patch
-Patch1:		%{name}-pilot-link.patch
+Patch1:		%{name}-ldadd.patch
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.0
@@ -78,9 +78,9 @@ Biblioteka GNOME pilot.
 %package devel
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
+Summary(ru):	Файлы разработки для GNOME pilot
 Summary(pl):	Biblioteki i pliki nagЁСwkowe gpilotd
 Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo do GNOME pilot
-Summary(ru):	Файлы разработки для GNOME pilot
 Summary(uk):	Файли розробки для GNOME pilot
 Summary(zh_CN):	GNOME pilot©╙╥╒©Б
 Group:		Development/Libraries
@@ -136,12 +136,16 @@ Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
 %patch0 -p1
 %patch1 -p1
 
+# regenerate
+rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
+rm -f gpilotd/gnome-pilot-conduit-file.c gpilotd/gnome-pilot-conduit-standard.c libgpilotdCM/gnome-pilot-conduit-management.c
+rm -f libgpilotdCM/gnome-pilot-conduit-config.c
+
 %build
 %{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-pilotlinktest \
 	--enable-usb \
 	--enable-network
 %{__make}
@@ -156,9 +160,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-pilot/conduits/*.{la,a}
 rm -rf $RPM_BUILD_ROOT%{_datadir}/mime-info
 
 install -d $RPM_BUILD_ROOT%{_desktopdir}
-mv $RPM_BUILD_ROOT%{_datadir}/control-center-2.0/capplets/*.desktop $RPM_BUILD_ROOT%{_desktopdir}
-
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
