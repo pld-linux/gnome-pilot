@@ -13,9 +13,11 @@ Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	662aae1d5915e81e64ee1a6c732c627d
 Patch0:		%{name}-capplet.patch
+Patch1:		%{name}-pilot-link.patch
 URL:		http://www.gnome.org/gnome-pilot/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.0
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-panel-devel >= 2.14.0
 BuildRequires:	gnome-vfs2-devel >= 2.14.0
@@ -28,8 +30,8 @@ BuildRequires:	pilot-link-devel >= 0.12
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper
+Requires(post,preun):	GConf2 >= 2.14.0
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -76,9 +78,9 @@ Biblioteka GNOME pilot.
 %package devel
 Summary:	GNOME pilot includes, etc
 Summary(da):	GNOME pilot include filer etc
-Summary(ru):	Файлы разработки для GNOME pilot
 Summary(pl):	Biblioteki i pliki nagЁСwkowe gpilotd
 Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo do GNOME pilot
+Summary(ru):	Файлы разработки для GNOME pilot
 Summary(uk):	Файли розробки для GNOME pilot
 Summary(zh_CN):	GNOME pilot©╙╥╒©Б
 Group:		Development/Libraries
@@ -132,10 +134,14 @@ Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-cp -f /usr/share/automake/config.sub .
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure \
+	--enable-pilotlinktest \
 	--enable-usb \
 	--enable-network
 %{__make}
