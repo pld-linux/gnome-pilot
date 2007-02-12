@@ -1,10 +1,10 @@
 Summary:	GNOME pilot programs
-Summary(da):	GNOME pilot programmer
-Summary(pl):	Programy pilota GNOME
-Summary(pt_BR):	Programas do GNOME Pilot
-Summary(ru):	Программы GNOME для работы с PalmPilot
-Summary(uk):	Програми GNOME для роботи з PalmPilot
-Summary(zh_CN):	╪╞ЁиGNOME╨мPalmPilot╣дЁлпР╪╞
+Summary(da.UTF-8):   GNOME pilot programmer
+Summary(pl.UTF-8):   Programy pilota GNOME
+Summary(pt_BR.UTF-8):   Programas do GNOME Pilot
+Summary(ru.UTF-8):   п÷я─п╬пЁя─п╟п╪п╪я▀ GNOME п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ PalmPilot
+Summary(uk.UTF-8):   п÷я─п╬пЁя─п╟п╪п╦ GNOME п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ PalmPilot
+Summary(zh_CN.UTF-8):   И⌡├Ф┬░GNOMEЕ▓▄PalmPilotГ └Г╗▀Е╨▐И⌡├
 Name:		gnome-pilot
 Version:	2.0.15
 Release:	1
@@ -44,47 +44,47 @@ Environment. That's a fancy name but really GNOME is a nice GUI
 desktop environment. It makes using your computer easy, powerful, and
 easy to configure.
 
-%description -l da
-GNOME stЕr for GNU Network Object Model Environment, GNU NetvФrk
-Objekt Model MiljЬ. Et smart navn, men GNOME er i virkeligheden en
-pФnt GUI desktop miljЬ. Det gЬr brugen af din computer nemmere,
-kraftiger og nemmere at sФtte op.
+%description -l da.UTF-8
+GNOME stц╔r for GNU Network Object Model Environment, GNU Netvц╕rk
+Objekt Model Miljц╦. Et smart navn, men GNOME er i virkeligheden en
+pц╕nt GUI desktop miljц╦. Det gц╦r brugen af din computer nemmere,
+kraftiger og nemmere at sц╕tte op.
 
-%description -l pl
-GNOME pilot jest kolekcj╠ programСw i demonСw integruj╠cych GNOME z
+%description -l pl.UTF-8
+GNOME pilot jest kolekcjд┘ programцЁw i demonцЁw integrujд┘cych GNOME z
 PalmPilotem(TM).
 
-%description -l pt_BR
-GNOME pilot И um conjunto de programas para integrar o GNOME ao
+%description -l pt_BR.UTF-8
+GNOME pilot ц╘ um conjunto de programas para integrar o GNOME ao
 PalmPilot(tm).
 
-%description -l ru
-GNOME pilot - это коллекция программ и демон для интеграции GNOME и
+%description -l ru.UTF-8
+GNOME pilot - я█я┌п╬ п╨п╬п╩п╩п╣п╨я├п╦я▐ п©я─п╬пЁя─п╟п╪п╪ п╦ п╢п╣п╪п╬п╫ п╢п╩я▐ п╦п╫я┌п╣пЁя─п╟я├п╦п╦ GNOME п╦
 PalmPilot (tm).
 
-%description -l uk
-GNOME pilot - це колекц╕я програм та демон для ╕нтеграц╕╖ GNOME та
+%description -l uk.UTF-8
+GNOME pilot - я├п╣ п╨п╬п╩п╣п╨я├я√я▐ п©я─п╬пЁя─п╟п╪ я┌п╟ п╢п╣п╪п╬п╫ п╢п╩я▐ я√п╫я┌п╣пЁя─п╟я├я√я≈ GNOME я┌п╟
 PalmPilot (tm).
 
 %package libs
 Summary:	GNOME pilot library
-Summary(pl):	Biblioteka GNOME pilot
+Summary(pl.UTF-8):   Biblioteka GNOME pilot
 Group:		Development/Libraries
 
 %description libs
 GNOME pilot library.
 
-%description libs -l da
+%description libs -l da.UTF-8
 Biblioteka GNOME pilot.
 
 %package devel
 Summary:	GNOME pilot includes, etc
-Summary(da):	GNOME pilot include filer etc
-Summary(pl):	Biblioteki i pliki nagЁСwkowe gpilotd
-Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo do GNOME pilot
-Summary(ru):	Файлы разработки для GNOME pilot
-Summary(uk):	Файли розробки для GNOME pilot
-Summary(zh_CN):	GNOME pilot©╙╥╒©Б
+Summary(da.UTF-8):   GNOME pilot include filer etc
+Summary(pl.UTF-8):   Biblioteki i pliki nagе┌цЁwkowe gpilotd
+Summary(pt_BR.UTF-8):   Bibliotecas e arquivos de inclusцёo do GNOME pilot
+Summary(ru.UTF-8):   п╓п╟п╧п╩я▀ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п╢п╩я▐ GNOME pilot
+Summary(uk.UTF-8):   п╓п╟п╧п╩п╦ я─п╬п╥я─п╬п╠п╨п╦ п╢п╩я▐ GNOME pilot
+Summary(zh_CN.UTF-8):   GNOME pilotЕ╪─Е▐▒Е╨⌠
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libgnomeui-devel >= 2.16.0
@@ -93,45 +93,45 @@ Requires:	pilot-link-devel >= 0.11.8
 %description devel
 gpilotd libraries and includes.
 
-%description devel -l da
+%description devel -l da.UTF-8
 gpilotd include filer og biblioteker.
 
-%description devel -l pl
-Biblioteki i pliki nagЁСwkowe gpilotd.
+%description devel -l pl.UTF-8
+Biblioteki i pliki nagе┌цЁwkowe gpilotd.
 
-%description devel -l pt_BR
-Bibliotecas e arquivos de inclusЦo para desenvolvimento baseado no
+%description devel -l pt_BR.UTF-8
+Bibliotecas e arquivos de inclusцёo para desenvolvimento baseado no
 GNOME pilot.
 
-%description devel -l ru
-Файлы разработки для GNOME pilot.
+%description devel -l ru.UTF-8
+п╓п╟п╧п╩я▀ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п╢п╩я▐ GNOME pilot.
 
-%description devel -l uk
-Файли розробки для GNOME pilot.
+%description devel -l uk.UTF-8
+п╓п╟п╧п╩п╦ я─п╬п╥я─п╬п╠п╨п╦ п╢п╩я▐ GNOME pilot.
 
 %package static
 Summary:	GNOME pilot static libraries
-Summary(pl):	Biblioteki statyczne pakietu gnome-pilot
-Summary(pt_BR):	Bibliotecas estАticas do GNOME pilot
-Summary(ru):	Статические библиотеки для GNOME pilot
-Summary(uk):	Статичн╕ б╕бл╕отеки для GNOME pilot
+Summary(pl.UTF-8):   Biblioteki statyczne pakietu gnome-pilot
+Summary(pt_BR.UTF-8):   Bibliotecas estц║ticas do GNOME pilot
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╢п╩я▐ GNOME pilot
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п╢п╩я▐ GNOME pilot
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 GNOME pilot static libraries
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne pakietu gnome-pilot.
 
-%description static -l pt_BR
-Bibliotecas estАticas para desenvolvimento baseado no GNOME pilot.
+%description static -l pt_BR.UTF-8
+Bibliotecas estц║ticas para desenvolvimento baseado no GNOME pilot.
 
-%description static -l ru
-Статические библиотеки для GNOME pilot.
+%description static -l ru.UTF-8
+п║я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╢п╩я▐ GNOME pilot.
 
-%description static -l uk
-Статичн╕ б╕бл╕отеки для GNOME pilot.
+%description static -l uk.UTF-8
+п║я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п╢п╩я▐ GNOME pilot.
 
 %prep
 %setup -q
