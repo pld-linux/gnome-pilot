@@ -1,10 +1,10 @@
 Summary:	GNOME pilot programs
-Summary(da.UTF-8):   GNOME pilot programmer
-Summary(pl.UTF-8):   Programy pilota GNOME
-Summary(pt_BR.UTF-8):   Programas do GNOME Pilot
-Summary(ru.UTF-8):   Программы GNOME для работы с PalmPilot
-Summary(uk.UTF-8):   Програми GNOME для роботи з PalmPilot
-Summary(zh_CN.UTF-8):   集成GNOME和PalmPilot的程序集
+Summary(da.UTF-8):	GNOME pilot programmer
+Summary(pl.UTF-8):	Programy pilota GNOME
+Summary(pt_BR.UTF-8):	Programas do GNOME Pilot
+Summary(ru.UTF-8):	Программы GNOME для работы с PalmPilot
+Summary(uk.UTF-8):	Програми GNOME для роботи з PalmPilot
+Summary(zh_CN.UTF-8):	集成GNOME和PalmPilot的程序集
 Name:		gnome-pilot
 Version:	2.0.15
 Release:	1
@@ -68,7 +68,7 @@ PalmPilot (tm).
 
 %package libs
 Summary:	GNOME pilot library
-Summary(pl.UTF-8):   Biblioteka GNOME pilot
+Summary(pl.UTF-8):	Biblioteka GNOME pilot
 Group:		Development/Libraries
 
 %description libs
@@ -79,12 +79,12 @@ Biblioteka GNOME pilot.
 
 %package devel
 Summary:	GNOME pilot includes, etc
-Summary(da.UTF-8):   GNOME pilot include filer etc
-Summary(pl.UTF-8):   Biblioteki i pliki nagłówkowe gpilotd
-Summary(pt_BR.UTF-8):   Bibliotecas e arquivos de inclusão do GNOME pilot
-Summary(ru.UTF-8):   Файлы разработки для GNOME pilot
-Summary(uk.UTF-8):   Файли розробки для GNOME pilot
-Summary(zh_CN.UTF-8):   GNOME pilot开发库
+Summary(da.UTF-8):	GNOME pilot include filer etc
+Summary(pl.UTF-8):	Biblioteki i pliki nagłówkowe gpilotd
+Summary(pt_BR.UTF-8):	Bibliotecas e arquivos de inclusão do GNOME pilot
+Summary(ru.UTF-8):	Файлы разработки для GNOME pilot
+Summary(uk.UTF-8):	Файли розробки для GNOME pilot
+Summary(zh_CN.UTF-8):	GNOME pilot开发库
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libgnomeui-devel >= 2.16.0
@@ -111,10 +111,10 @@ GNOME pilot.
 
 %package static
 Summary:	GNOME pilot static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne pakietu gnome-pilot
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas do GNOME pilot
-Summary(ru.UTF-8):   Статические библиотеки для GNOME pilot
-Summary(uk.UTF-8):   Статичні бібліотеки для GNOME pilot
+Summary(pl.UTF-8):	Biblioteki statyczne pakietu gnome-pilot
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas do GNOME pilot
+Summary(ru.UTF-8):	Статические библиотеки для GNOME pilot
+Summary(uk.UTF-8):	Статичні бібліотеки для GNOME pilot
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
