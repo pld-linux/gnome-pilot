@@ -7,7 +7,7 @@ Summary(uk.UTF-8):	Програми GNOME для роботи з PalmPilot
 Summary(zh_CN.UTF-8):	集成GNOME和PalmPilot的程序集
 Name:		gnome-pilot
 Version:	2.0.15
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
