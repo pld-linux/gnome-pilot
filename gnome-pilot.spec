@@ -7,7 +7,7 @@ Summary(uk.UTF-8):	Програми GNOME для роботи з PalmPilot
 Summary(zh_CN.UTF-8):	集成GNOME和PalmPilot的程序集
 Name:		gnome-pilot
 Version:	2.0.15
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
@@ -35,6 +35,8 @@ BuildRequires:	scrollkeeper
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires:	%{name}-libs = %{version}-%{release}
+# sr@Latn vs. sr@latin
+Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -163,6 +165,8 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/mime-info
 
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 
+[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
+	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang %{name} --with-gnome --all-name
 
 %clean
