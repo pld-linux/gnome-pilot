@@ -6,32 +6,36 @@ Summary(ru.UTF-8):	Программы GNOME для работы с PalmPilot
 Summary(uk.UTF-8):	Програми GNOME для роботи з PalmPilot
 Summary(zh_CN.UTF-8):	集成GNOME和PalmPilot的程序集
 Name:		gnome-pilot
-Version:	2.0.15
-Release:	4
-License:	GPL
+Version:	2.0.16
+Release:	1
+License:	GPL v2
 Group:		Applications/Communications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	460a1fdd2206e1bbf820639831ca88f8
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	f14e87d89902f82981f106c8df9277c9
 Patch0:		%{name}-capplet.patch
-Patch1:		%{name}-ldadd.patch
-URL:		http://www.gnome.org/gnome-pilot/
+URL:		http://live.gnome.org/GnomePilot
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.71
+BuildRequires:	gnome-common
 BuildRequires:	gnome-panel-devel >= 2.16.0
 BuildRequires:	gnome-vfs2-devel >= 2.16.0
 BuildRequires:	gob2 >= 2.0.14
 BuildRequires:	hal-devel >= 0.5.7.1
 BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libbonobo-devel >= 2.14.0
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.16.0
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	pilot-link-devel >= 0.11.8
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
+BuildRequires:	sed >= 4.0
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires:	%{name}-libs = %{version}-%{release}
@@ -138,17 +142,21 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 # regenerate
 rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
 rm -f gpilotd/gnome-pilot-conduit-file.c gpilotd/gnome-pilot-conduit-standard.c libgpilotdCM/gnome-pilot-conduit-management.c
 rm -f libgpilotdCM/gnome-pilot-conduit-config.c
 
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
+mv po/sr@{Latn,latin}.po
+
 %build
 %{__intltoolize}
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--enable-usb \
@@ -164,11 +172,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-pilot/conduits/*.{la,a}
 rm -rf $RPM_BUILD_ROOT%{_datadir}/mime-info
 
-install -d $RPM_BUILD_ROOT%{_desktopdir}
-
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --with-gnome --all-name
+%find_lang %{name} --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -189,31 +193,50 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/gpilot*
+%attr(755,root,root) %{_bindir}/gnome-pilot-make-password
+%attr(755,root,root) %{_bindir}/gpilot-install-file
+%attr(755,root,root) %{_bindir}/gpilotd-control-applet
+%attr(755,root,root) %{_bindir}/gpilotd-session-wrapper
+%attr(755,root,root) %{_libdir}/gpilot-applet
+%attr(755,root,root) %{_libdir}/gpilotd
 %dir %{_libdir}/gnome-pilot
 %dir %{_libdir}/gnome-pilot/conduits
-%attr(755,root,root) %{_libdir}/gnome-pilot/conduits/lib*.so
-%{_libdir}/bonobo/servers/*
-%{_desktopdir}/*.desktop
+%attr(755,root,root) %{_libdir}/gnome-pilot/conduits/libbackup_conduit.so
+%attr(755,root,root) %{_libdir}/gnome-pilot/conduits/libfile_conduit.so
+%attr(755,root,root) %{_libdir}/gnome-pilot/conduits/libtest_conduit.so
+%{_libdir}/bonobo/servers/GNOME_PilotApplet.server
+%{_libdir}/bonobo/servers/GNOME_Pilot_Daemon.server
+%{_desktopdir}/gpilot-applet.desktop
+%{_desktopdir}/gpilotd-control-applet.desktop
 %{_datadir}/gnome-pilot
-%{_datadir}/idl/*
+%{_datadir}/idl/gnome-pilot.idl
 %{_sysconfdir}/gconf/schemas/pilot.schemas
-%{_omf_dest_dir}/%{name}
 %{_pixmapsdir}/*
-%{_mandir}/man1/*
+%{_mandir}/man1/gpilot-install-file.1*
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libgpilotd.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgpilotd.so.2
+%attr(755,root,root) %{_libdir}/libgpilotdcm.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgpilotdcm.so.2
+%attr(755,root,root) %{_libdir}/libgpilotdconduit.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgpilotdconduit.so.2
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
-%{_pkgconfigdir}/*
+%attr(755,root,root) %{_libdir}/libgpilotd.so
+%attr(755,root,root) %{_libdir}/libgpilotdcm.so
+%attr(755,root,root) %{_libdir}/libgpilotdconduit.so
+%{_libdir}/libgpilotd.la
+%{_libdir}/libgpilotdcm.la
+%{_libdir}/libgpilotdconduit.la
+%{_includedir}/gpilotd
+%{_includedir}/libgpilotdCM
+%{_pkgconfigdir}/gnome-pilot-2.0.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgpilotd.a
+%{_libdir}/libgpilotdcm.a
+%{_libdir}/libgpilotdconduit.a
