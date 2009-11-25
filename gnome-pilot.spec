@@ -19,6 +19,7 @@ BuildRequires:	ORBit2-devel >= 1:2.14.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.71
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-common
 BuildRequires:	gnome-panel-devel >= 2.16.0
 BuildRequires:	gnome-vfs2-devel >= 2.16.0
