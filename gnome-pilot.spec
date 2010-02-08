@@ -6,13 +6,15 @@ Summary(ru.UTF-8):	Программы GNOME для работы с PalmPilot
 Summary(uk.UTF-8):	Програми GNOME для роботи з PalmPilot
 Summary(zh_CN.UTF-8):	集成GNOME和PalmPilot的程序集
 Name:		gnome-pilot
-Version:	2.0.16
-Release:	6
+Version:	2.0.17
+Release:	1
 License:	GPL v2
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	f14e87d89902f82981f106c8df9277c9
+# Source0-md5:	6086573332d607ddba06fe705667b240
 Patch0:		%{name}-capplet.patch
+# https://bugzilla.gnome.org/show_bug.cgi?id=584894
+Patch1:		%{name}-applet-fix-missing-icons.patch
 URL:		http://live.gnome.org/GnomePilot
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	ORBit2-devel >= 1:2.14.3
@@ -143,6 +145,7 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 # regenerate
 rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
@@ -207,7 +210,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gnome-pilot/conduits/libtest_conduit.so
 %{_libdir}/bonobo/servers/GNOME_PilotApplet.server
 %{_libdir}/bonobo/servers/GNOME_Pilot_Daemon.server
-%{_desktopdir}/gpilot-applet.desktop
 %{_desktopdir}/gpilotd-control-applet.desktop
 %{_datadir}/gnome-pilot
 %{_datadir}/idl/gnome-pilot.idl
