@@ -1,12 +1,11 @@
 diff -urN gnome-pilot-2.0.16/capplet/gpilotd-control-applet.desktop.in.in gnome-pilot-2.0.16.new/capplet/gpilotd-control-applet.desktop.in.in
 --- gnome-pilot-2.0.16/capplet/gpilotd-control-applet.desktop.in.in	2007-02-09 09:48:00.000000000 +0100
 +++ gnome-pilot-2.0.16.new/capplet/gpilotd-control-applet.desktop.in.in	2008-05-14 13:53:08.000000000 +0200
-@@ -7,7 +7,7 @@
- Terminal=false
+@@ -7,6 +7,7 @@
  StartupNotify=true
  Type=Application
--Categories=GNOME;GTK;Settings;HardwareSettings;
-+Categories=GNOME;GTK;Settings;HardwareSettings;X-Capplet;
+ Categories=GNOME;GTK;Settings;HardwareSettings;
++OnlyShowIn=GNOME;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=gnome-pilot
  X-GNOME-Bugzilla-Component=capplet
