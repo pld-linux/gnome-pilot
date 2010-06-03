@@ -7,7 +7,7 @@ Summary(uk.UTF-8):	Програми GNOME для роботи з PalmPilot
 Summary(zh_CN.UTF-8):	集成GNOME和PalmPilot的程序集
 Name:		gnome-pilot
 Version:	2.0.17
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/2.0/%{name}-%{version}.tar.bz2
@@ -146,11 +146,6 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-
-# regenerate
-#rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
-#rm -f gpilotd/gnome-pilot-conduit-file.c gpilotd/gnome-pilot-conduit-standard.c libgpilotdCM/gnome-pilot-conduit-management.c
-#rm -f libgpilotdCM/gnome-pilot-conduit-config.c
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
