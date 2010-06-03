@@ -148,9 +148,9 @@ Bibliotecas estáticas para desenvolvimento baseado no GNOME pilot.
 %patch1 -p1
 
 # regenerate
-rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
-rm -f gpilotd/gnome-pilot-conduit-file.c gpilotd/gnome-pilot-conduit-standard.c libgpilotdCM/gnome-pilot-conduit-management.c
-rm -f libgpilotdCM/gnome-pilot-conduit-config.c
+#rm -f applet/gpilot-applet-progress.c gpilotd/gnome-pilot-client.c gpilotd/gnome-pilot-conduit.c gpilotd/gnome-pilot-conduit-backup.c
+#rm -f gpilotd/gnome-pilot-conduit-file.c gpilotd/gnome-pilot-conduit-standard.c libgpilotdCM/gnome-pilot-conduit-management.c
+#rm -f libgpilotdCM/gnome-pilot-conduit-config.c
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
